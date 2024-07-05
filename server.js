@@ -17,18 +17,23 @@ const server = http.createServer((req,res)=>{
 
 
    //Bad way to copy big files
-   const file = fs.readFileSync('test.txt')
-   fs.writeFileSync('output.txt',file)
-   res.end()
+   // const file = fs.readFileSync('test.txt')
+   // fs.writeFileSync('output.txt',file)
+   // res.end()
 
-   //Good way to copy big files
-   const readStream = fs.createReadStream('test.txt');
-   const writeStream = fs.createWriteStream('output.txt');
+   // //Good way to copy big files
+   // const readStream = fs.createReadStream('test.txt');
+   // const writeStream = fs.createWriteStream('output.txt');
 
-   readStream.on('data',(chunk)=>{
-      console.log(chunk,'chunk')
-      writeStream.write(chunk);
-   })
+   // readStream.on('data',(chunk)=>{
+   //    console.log(chunk,'chunk')
+   //    writeStream.write(chunk);
+   // })
+
+
+   
+   
+   
    res.end();
 })
 
