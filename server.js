@@ -36,7 +36,8 @@ const server = http.createServer((req,res)=>{
 
    sampleFileStream.on('data',(chunk)=>{
       console.log(chunk,'chunk')
-      const finalString = chunk.toString().toUpperCase();
+      const upperCaseString = chunk.toString().toUpperCase();
+      const finalString = upperCaseString.replaceAll(/the/gi,'And')
 
       outputWritableStream.write(finalString);
    })
