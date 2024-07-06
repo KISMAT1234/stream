@@ -12,7 +12,7 @@ write(s){
 })
 
 readableStream.on('data', (chunk)=>{
-    console.log('Data coming',chunk);
+    console.log('Data coming in chunk',chunk);
     console.log('Data coming',chunk.toString());
     WritableStream.write(chunk)
 })
