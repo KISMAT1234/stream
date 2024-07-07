@@ -35,7 +35,7 @@ const server = http.createServer((req,res)=>{
    const sampleFileStream = fs.createReadStream('text.txt')
    const outputWritableStream = fs.createWriteStream('output.txt')
 
-   const transform = new Transform({
+   const transformStream = new Transform({
       transform(chunk,encoding,callback){
          console.log(chunk.toString(),'chunk')
          const upperCaseString = chunk.toString().toUpperCase();
@@ -44,13 +44,16 @@ const server = http.createServer((req,res)=>{
       }
    })
 
-   sampleFileStream.on('data',(chunk)=>{
-      console.log(chunk,'chunk')
-      const upperCaseString = chunk.toString().toUpperCase();
-      const finalString = upperCaseString.replaceAll(/the/gi,'And')
+   // sampleFileStream.on('data',(chunk)=>{
+   //    console.log(chunk,'chunk')
+   //    const upperCaseString = chunk.toString().toUpperCase();
+   //    const finalString = upperCaseString.replaceAll(/the/gi,'And')
 
-      outputWritableStream.write(finalString);
-   })
+   //    outputWritableStream.write(finalString);
+   // })
+
+   sampleFileStream.pipe(transformStream).pipe(outputWritableStream)
+
    
    
    res.end();
