@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs');
-const {Transform} = require('stream')
+const {Transform,pipeline} = require('stream')
 const replaceWordProcessing = require( './replaceWordProcessor');
 const uppercaseWordProcessing = require('./uppercaseWordProcessor');
 
@@ -36,6 +36,17 @@ const server = http.createServer((req,res)=>{
 
    const sampleFileStream = fs.createReadStream('text.txt')
    const outputWritableStream = fs.createWriteStream('output.txt')
+
+   pipeline(sampleFileStream, 
+      replaceWordProcessing, 
+      uppercaseWordProcessing, 
+      outputWritableStream,
+      (err)=>{
+         if(err){
+            console.log(err);
+         }
+      }
+   )
 
    // const transformStream = new Transform({
    //    transform(chunk,encoding,callback){
