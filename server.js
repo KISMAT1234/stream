@@ -1,6 +1,8 @@
 const http = require('http')
 const fs = require('fs');
 const {Transform} = require('stream')
+const replaceWordProcessing = require( './replaceWordProcessor');
+const uppercaseWordProcessing = require('./uppercaseWordProcessor');
 
 const server = http.createServer((req,res)=>{
    if(req.url !=='/'){
@@ -35,14 +37,14 @@ const server = http.createServer((req,res)=>{
    const sampleFileStream = fs.createReadStream('text.txt')
    const outputWritableStream = fs.createWriteStream('output.txt')
 
-   const transformStream = new Transform({
-      transform(chunk,encoding,callback){
-         console.log(chunk.toString(),'chunk')
-         const upperCaseString = chunk.toString().toUpperCase();
-         const finalString = upperCaseString.replaceAll(/the/gi,'And')
-         callback(null,finalString);
-      }
-   })
+   // const transformStream = new Transform({
+   //    transform(chunk,encoding,callback){
+   //       console.log(chunk.toString(),'chunk')
+   //       const upperCaseString = chunk.toString().toUpperCase();
+   //       const finalString = upperCaseString.replaceAll(/the/gi,'And')
+   //       callback(null,finalString);
+   //    }
+   // })
 
    // sampleFileStream.on('data',(chunk)=>{
    //    console.log(chunk,'chunk')
@@ -52,7 +54,7 @@ const server = http.createServer((req,res)=>{
    //    outputWritableStream.write(finalString);
    // })
 
-   sampleFileStream.pipe(transformStream).pipe(outputWritableStream)
+   sampleFileStream.pipe(replaceWordProcessing).pipe(uppercaseWordProcessing).pipe(outputWritableStream) 
 
    
    
