@@ -34,19 +34,20 @@ const server = http.createServer((req,res)=>{
    // })
 
 
-   const sampleFileStream = fs.createReadStream('text.txt')
-   const outputWritableStream = fs.createWriteStream('output.txt')
+   // const sampleFileStream = fs.createReadStream('text.txt')
+   // const outputWritableStream = fs.createWriteStream('output.txt')
 
-   pipeline(sampleFileStream, 
-      replaceWordProcessing, 
-      uppercaseWordProcessing, 
-      outputWritableStream,
-      (err)=>{
-         if(err){
-            console.log(err);
-         }
-      }
-   )
+   // Used pipeline for better file streams
+   // pipeline(sampleFileStream, 
+   //    replaceWordProcessing, 
+   //    uppercaseWordProcessing, 
+   //    outputWritableStream,
+   //    (err)=>{
+   //       if(err){
+   //          console.log(err);
+   //       }
+   //    }
+   // )
 
    // const transformStream = new Transform({
    //    transform(chunk,encoding,callback){
