@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const {Worker} = require("worker_threads")
 
 app.get('/non-blocking',(req,res)=>{
     res.status(200).send("This page is non blocking");
@@ -8,11 +9,16 @@ app.get('/non-blocking',(req,res)=>{
 
 
 app.get('/blocking',(req,res)=>{
-    let counter = 0;
-    for(let i=0;i<1000000000000;i++){
-        counter++;
-    }
-    res.status(200).send(`This page is blocking ${counter}`);
+    const worker = new Worker("./worker.js")
+    worker.on("message",(data)=>{
+        res.status(200).send(`This page is blocking ${data}`);
+    })
+
+    worker.on("error",(error)=>{
+        res.status(200).send("Error");
+    })
+
+  
 })
 
 app.listen(8000,()=>{
