@@ -19,3 +19,7 @@ app.get('/heavy',(req,res)=>{
 app.listen(8000,()=>{
     console.log(`App listening on port 8000`)
 })
+
+
+//loadtesting 
+// npx loadtest -n 1200 -c 400 -k http://localhost:8000
