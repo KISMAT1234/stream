@@ -23,3 +23,9 @@ app.listen(8000,()=>{
 
 //loadtesting 
 // npx loadtest -n 1200 -c 400 -k http://localhost:8000
+
+// pm2 memory usage test
+// npx pm2 start primary.js
+// npx pm2 monit
+// npx pm2 status
+// npx pm2 stop primary.js
