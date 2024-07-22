@@ -22,11 +22,19 @@ const __dir = path.dirname(__filename);
 //     console.log(`stdout:\n${stdout}`);
 // });
 
+
+
+
 // let counter = 0;
+// setTimeout(() => {
+//     console.log('before')
 // for(i=0;i<1000000000; i++){
 //     counter++;
 // }
-// console.log(`${Date.now()-start}ms Processing ${counter} in main file`)
+// console.log(`${Date.now()-start}ms Processing ${counter} in main file 2`)
+// console.log('after')
+// },1000)
+// console.log('last processed')
 
 
 // console.log('before')
@@ -56,21 +64,31 @@ const __dir = path.dirname(__filename);
 
 
 
-//spwan
-const spwanedChild = spawn('find',['.']);
-spwanedChild.stdout.on('data',(data)=>{
- console.log(`stdout:\n${data}`);
-})
-spwanedChild.stderr.on('data',(data)=>{
-    console.log(`stderr:\n${data}`);
-})
-spwanedChild.on('error',(error)=>{
-    console.log(`stdout:\n${data.message}`);
-   })
-spwanedChild.on('close',(code)=>{
-    console.log(`child process exited with  ${code}`);
-})
+// //spwan
+// const spwanedChild = spawn('find',['.']);
+// spwanedChild.stdout.on('data',(data)=>{
+//  console.log(`stdout:\n${data}`);
+// })
+// spwanedChild.stderr.on('data',(data)=>{
+//     console.log(`stderr:\n${data}`);
+// })
+// spwanedChild.on('error',(error)=>{
+//     console.log(`stdout:\n${data.message}`);
+//    })
+// spwanedChild.on('close',(code)=>{
+//     console.log(`child process exited with  ${code}`);
+// })
 
+
+
+// //fork
+// const forkProcessorPath = path.resolve(__dir,'forkProcessor.js');
+// const forkedChild = fork(forkProcessorPath);
+// // console.log(forkedChild,'fork consoled')
+// forkedChild.on('message',(msg)=>{
+//     console.log(`Message from data process exchange`,msg)
+// })
+// forkedChild.send({hello: 'world'});
 
 
 
