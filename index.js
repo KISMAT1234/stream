@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 const app= express();
 app.use(express.json())
-app.use("/users", userRoutes);
+// app.use("/users", userRoutes);
 
 const Database = async() => {
 try{
@@ -10,6 +11,7 @@ try{
     // console.log('MongoDb connected');
 } catch(err){
     // console.log('connection failed');
+    console.error(err)
 }
 }
 Database()
