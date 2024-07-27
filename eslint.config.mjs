@@ -1,10 +1,31 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
 
-
-export default [
-  {files: ["**/*.js"], languageOptions: {sourceType: "commonjs"}},
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
-  
-];
+export default {
+ 
+  // "env":{
+  //   "browser":true
+  // },
+  // "extends":"eslint:recommended",
+  "rules": {
+    "consistent-return":"error",
+    "quotes":[
+      "error",
+      "single"
+    ],
+    // "linebreak-styles":[
+    //   "error",
+    //   "unix"
+    // ],
+    "quotes":[
+      "error",
+      "single"
+    ],
+    "semi":[
+      "error",
+      "always",
+    ],
+        // "indent":[
+    //   "error",
+    //   2
+    // ],
+  },
+}
