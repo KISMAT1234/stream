@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app= express();
-app.use(express.json())
+app.use(express.json());
 // app.use("/users", userRoutes);
 
 const Database = async() => {
@@ -11,19 +11,19 @@ try{
     // console.log('MongoDb connected');
 } catch(err){
     // console.log('connection failed');
-    console.error(err)
+    console.error(err);
 }
-}
-Database()
+};
+Database();
 app.post('/api/',(req,res)=>{
-    res.sendStatus(200)
-})
+    res.sendStatus(200);
+});
 
 
-const PORT = 8080
-app.listen(PORT,()=> console.log(`Listening on port ${PORT}`))
+const PORT = 8080;
+app.listen(PORT,()=> console.log(`Listening on port ${PORT}`));
 
-module.exports=app
+module.exports=app;
 
 
 
