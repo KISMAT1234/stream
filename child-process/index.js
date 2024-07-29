@@ -2,16 +2,14 @@ const fs = require('fs');
 const crypto = require('crypto')
 const start  = Date.now()
 
+process.env.UV_THREADPOOL_SIZE = 20
+
 setTimeout(()=>console.log('hello from timer'),0)
 setImmediate(()=>console.log('hello from setImmediate'))
-
-
-
 
 fs.readFile('non_existent_file.txt',(err,data)=>{
     console.log('File read completed')
     setTimeout(()=>console.log('hello from timer 2'),0)
-    setTimeout(()=>console.log(`${Date.now()-start}ms timer 3`),4000)
     setImmediate(()=>console.log('hello from setImmediate 2'))
 
     crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
@@ -29,12 +27,51 @@ fs.readFile('non_existent_file.txt',(err,data)=>{
     crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
         console.log(`${Date.now()-start}ms`,'Password 5 done')
     })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 6 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 7 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 8 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 9 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
+    crypto.pbkdf2('passsword','salt1',100000,1024,'sha512',()=>{
+        console.log(`${Date.now()-start}ms`,'Password 10 done')
+    })
 
     console.log('after crypto');
     setTimeout(()=>console.log('after crypto from timer '),0)
-
-    
-
 
 })
 
