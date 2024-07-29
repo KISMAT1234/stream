@@ -6,7 +6,10 @@ export default {
   // },
   // "extends":"eslint:recommended",
   "rules": {
+    "no-restricted-imports": ["error","underscore"],
     "consistent-return":"error",
+    "no-console":"error",
+    
     "quotes":[
       "error",
       "single"
