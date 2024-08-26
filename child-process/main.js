@@ -81,14 +81,21 @@ const __dir = path.dirname(__filename);
 
 
 
-// //fork
-// const forkProcessorPath = path.resolve(__dir,'forkProcessor.js');
-// const forkedChild = fork(forkProcessorPath);
-// // console.log(forkedChild,'fork consoled')
-// forkedChild.on('message',(msg)=>{
-//     console.log(`Message from data process exchange`,msg)
-// })
-// forkedChild.send({hello: 'world'});
+//fork
+const forkProcessorPath = path.resolve(__dir,'forkProcessor.js');
+const forkedChild = fork(forkProcessorPath);
+// console.log(forkedChild,'fork consoled')
+forkedChild.on('message',(msg)=>{
+    console.log(`Message from data process exchange`,msg)
+})
+
+forkedChild.send({hello: 'world'});
+
+let counter = 0;
+for(i=0;i<1000000000; i++){
+    counter++;
+}
+console.log(counter)
 
 
 
