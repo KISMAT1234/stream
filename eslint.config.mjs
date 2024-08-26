@@ -1,14 +1,15 @@
-
+import eslintConfigPrettier from "eslint"
 export default {
  
   // "env":{
   //   "browser":true
   // },
-  // "extends":"eslint:recommended",
+  // "extends":[eslintConfigPrettier],  // mixing of eslint and prettier
   "rules": {
-    "no-restricted-imports": ["error","underscore"],
-    "consistent-return":"error",
-    "no-console":"error",
+    // "no-restricted-imports": ["error","underscore"],
+    // "consistent-return":"error",
+    // "find-payments": "error",
+    // "no-console":"error",
     
     "quotes":[
       "error",
