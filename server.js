@@ -58,13 +58,13 @@ const server = http.createServer((req,res)=>{
    //    }
    // })
 
-   // sampleFileStream.on('data',(chunk)=>{
-   //    console.log(chunk,'chunk')
-   //    const upperCaseString = chunk.toString().toUpperCase();
-   //    const finalString = upperCaseString.replaceAll(/the/gi,'And')
+   sampleFileStream.on('data',(chunk)=>{
+      console.log(chunk,'chunk')
+      const upperCaseString = chunk.toString().toUpperCase();
+      const finalString = upperCaseString.replaceAll(/the/gi,'And')
 
-   //    outputWritableStream.write(finalString);
-   // })
+      outputWritableStream.write(finalString);
+   })
 
    sampleFileStream.pipe(replaceWordProcessing).pipe(uppercaseWordProcessing).pipe(outputWritableStream) 
 
